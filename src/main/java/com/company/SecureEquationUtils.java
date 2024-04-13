@@ -15,24 +15,6 @@ public class SecureEquationUtils {
         return result;
     }
     
-    public static double solveQuadraticEquation(float a, float b, float c) {
-        if (a == 0) {
-            throw new IllegalArgumentException("Coefficient 'a' should not be zero; use solveLinearEquation instead.");
-        }
-        float discriminant = b * b - 4 * a * c;
-        validateFloat(discriminant);
-        
-        if (discriminant < 0) {
-            throw new IllegalArgumentException("Equation has no real roots.");
-        } else if (discriminant == 0) {
-            return -b / (2 * a);
-        } else {
-            double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-            double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-            return Math.max(root1, root2);
-        }
-    }
-    
     public static int calculateFactorial(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
@@ -70,22 +52,19 @@ public class SecureEquationUtils {
             System.out.println("2. Solve quadratic equation");
             System.out.println("3. Calculate factorial");
             System.out.println("4. Calculate gauss sum");
-            System.out.println("5. Exit");
+            System.out.println("0. Exit");
             operation = scanner.nextInt();
             switch (operation) {
                 case 1:
                     solveLinearEquation(scanner);
                     break;
                 case 2:
-                    solveQuadraticEquation(scanner);
-                    break;
-                case 3:
                     calculateFactorial(scanner);
                     break;
-                case 4:
+                case 3:
                     calculateGaussSum(scanner);
                     break;
-                case 5:
+                case 0:
                     return;
                 default:
                     System.out.println("Invalid operation selected");
@@ -103,21 +82,6 @@ public class SecureEquationUtils {
 
         double result = SecureEquationUtils.solveLinearEquation(a, b);
         System.out.println("The solution to the linear equation is: " + result);
-    }
-
-    private static void solveQuadraticEquation(Scanner scanner) {
-
-        System.out.println("Enter the value of a:");
-        float a = scanner.nextFloat();
-
-        System.out.println("Enter the value of b:");
-        float b = scanner.nextFloat();
-
-        System.out.println("Enter the value of c:");
-        float c = scanner.nextFloat();
-
-        double result = SecureEquationUtils.solveQuadraticEquation(a, b, c);
-        System.out.println("The solution to the quadratic equation is: " + result);
     }
 
     private static void calculateFactorial(Scanner scanner) {
@@ -140,12 +104,12 @@ public class SecureEquationUtils {
 
     private static void checkFloatOverflow(float a) {
         if (a == Float.POSITIVE_INFINITY || a == Float.NEGATIVE_INFINITY) {
-            throw new ArithmeticException("Float overflow occurred.");
+            throw new ArithmeticException("Invalid float");
         }
     }
     private static void checkFloatUnderflow(float a) {
         if (Float.compare(a, 0.0f) == 0 || Float.compare(a, -0.0f) == 0) {
-            throw new ArithmeticException("Float underflow occurred.");
+            throw new ArithmeticException("Invalid float");
         }
     }
     private static void validateFloat(float a) {
