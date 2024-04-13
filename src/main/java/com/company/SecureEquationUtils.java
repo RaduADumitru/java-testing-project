@@ -3,43 +3,43 @@ package com.company;
 import java.util.Scanner;
 
 public class SecureEquationUtils {
-    public static double solveLinearEquation(float a, float b) {
+    public static double solveLinearEquation(float a, float b) throws IllegalArgumentException, ArithmeticException {
         if (a == 0) {
             throw new IllegalArgumentException("Coefficient 'a' cannot be zero.");
         }
-        
+
         float result = -b / a;
 
         validateFloat(result);
-        
+
         return result;
     }
-    
-    public static int calculateFactorial(int n) {
+
+    public static int calculateFactorial(int n) throws IllegalArgumentException, ArithmeticException {
         if (n < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
         }
-        
+
         int factorial = 1;
         while (n > 0) {
             factorial = Math.multiplyExact(factorial, n);
             n--;
         }
-        
+
         return factorial;
     }
-    
-    public static int calculateGaussSumByDefinition(int n) {
+
+    public static int calculateGaussSumByDefinition(int n) throws IllegalArgumentException, ArithmeticException {
         if (n < 0) {
             throw new IllegalArgumentException("Gauss sum is not defined for negative numbers.");
         }
-        
+
         int sum = 0;
         do {
             sum = Math.addExact(sum, n);
             n--;
         } while (n > 0);
-        
+
         return sum;
     }
 
@@ -106,13 +106,14 @@ public class SecureEquationUtils {
             throw new ArithmeticException("Invalid float");
         }
     }
+
     private static void checkFloatUnderflow(float a) {
         if (Float.compare(a, 0.0f) == 0 || Float.compare(a, -0.0f) == 0) {
             throw new ArithmeticException("Invalid float");
         }
     }
+
     private static void validateFloat(float a) {
         checkFloatOverflow(a);
-        checkFloatUnderflow(a);
     }
 }
