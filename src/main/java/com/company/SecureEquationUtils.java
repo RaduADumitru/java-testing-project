@@ -49,9 +49,8 @@ public class SecureEquationUtils {
         while (true) {
             System.out.println("Select an operation:");
             System.out.println("1. Solve linear equation");
-            System.out.println("2. Solve quadratic equation");
-            System.out.println("3. Calculate factorial");
-            System.out.println("4. Calculate gauss sum");
+            System.out.println("2. Calculate factorial");
+            System.out.println("3. Calculate gauss sum");
             System.out.println("0. Exit");
             operation = scanner.nextInt();
             switch (operation) {
