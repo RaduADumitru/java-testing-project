@@ -103,13 +103,7 @@ public class SecureEquationUtils {
 
     private static void checkFloatOverflow(float a) {
         if (a == Float.POSITIVE_INFINITY || a == Float.NEGATIVE_INFINITY) {
-            throw new ArithmeticException("Invalid float");
-        }
-    }
-
-    private static void checkFloatUnderflow(float a) {
-        if (Float.compare(a, 0.0f) == 0 || Float.compare(a, -0.0f) == 0) {
-            throw new ArithmeticException("Invalid float");
+            throw new ArithmeticException("Float overflow");
         }
     }
 
