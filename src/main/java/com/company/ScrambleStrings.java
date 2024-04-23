@@ -6,27 +6,41 @@ import java.util.List;
 public class ScrambleStrings {
     public static List<String> scrambleStrings(int left, int right, List<String> strings) {
         List<String> result = new ArrayList<>();
-        StringBuilder word;
         int j, length;
         char letter;
 
-        if(right <= left)
+        if (right < 0 || left < 0)
+            throw new IllegalArgumentException("One of the interval bounds is negative.");
+
+        if (right <= left)
             throw new IllegalArgumentException("Right interval bound is less than equal to the left one.");
 
+        if (strings == null)
+            throw new NullPointerException("String list is null.");
+        if (strings.isEmpty())
+            throw new IllegalArgumentException("String list is empty.");
+
         for (String string : strings) {
-            word = new StringBuilder(string);
+            StringBuilder word = new StringBuilder(string);
             length = word.length();
 
             if (length >= left && length <= right) {
                 for (j = 0; j < length; j++) {
-                    letter = word.charAt(j);
+                    letter = string.charAt(j);
 
-                    if ((letter >= 'a' && letter <= 'm') || (letter >= 'A' && letter <= 'M')) letter += 13;
-                    else letter -= 13;
+                    if(Character.isDigit(letter)) {
+                        if((letter - '0') % 2 == 0)
+                            word.setCharAt(j, '$');
+                        else
+                            word.setCharAt(j, '&');
+                    } else {
+                        if ((letter >= 'a' && letter <= 'm') || (letter >= 'A' && letter <= 'M')) letter += 13;
+                        else letter -= 13;
 
-                    word.setCharAt(j, letter);
+                        word.setCharAt(j, letter);
+                    }
                 }
-            } else {
+            } else if (length > right) {
                 j = 0;
 
                 do {
@@ -36,7 +50,7 @@ public class ScrambleStrings {
                         word.setCharAt(j, Character.toUpperCase(word.charAt(j)));
 
                     j++;
-                } while (j < strings.size() - 1);
+                } while (j < length - 1);
             }
 
             result.add(word.toString());
