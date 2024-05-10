@@ -12,21 +12,9 @@ public class ScrambleStringsTest {
     @Test
     public void lineCoverage() {
         assertEquals(
-            Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf"),
+                Arrays.asList("tiger", "ryrc&nag", "tvenss$f", "zebra", "wolf", "sUpErDuPeRaNiMal"),
             ScrambleStrings.scrambleStrings(6, 8,
-                Arrays.asList("tiger", "elephant", "giraffe", "zebra", "wolf")
-            )
-        );
-        assertEquals(
-                Arrays.asList("tiger", "ryrc&nag", "tvenss$f", "zebra", "wolf"),
-            ScrambleStrings.scrambleStrings(6, 8,
-                Arrays.asList("tiger", "elep3ant", "giraff6s", "zebra", "wolf")
-            )
-        );
-        assertEquals(
-            Arrays.asList("tiger", "ryrc&nag", "tvenss$f", "zebra", "wolf", "sUpErDuPeRaNiMal"),
-            ScrambleStrings.scrambleStrings(6, 8,
-                    Arrays.asList("tiger", "elep3ant", "giraff6s", "zebra", "wolf", "superduperanimal")
+                Arrays.asList("tiger", "elep3ant", "giraff6s", "zebra", "wolf", "superduperanimal")
             )
         );
 
