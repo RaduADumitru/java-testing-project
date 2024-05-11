@@ -6,7 +6,6 @@ import org.apache.commons.math3.linear.EigenDecomposition;
 
 import java.util.Arrays;
 
-
 // aceasta clasa minimizeaza functia ||Ax-b||**2, unde ||x|| reprezinta norma euclidiana a vectorului x
 // A matrice cu m linii si n coloane
 // x vector cu n elemente (adica un IndArary din nd4j cu o singura linie si n coloane)
@@ -23,6 +22,7 @@ public class SquaredNormOfADotXMinusB {
         this.xCurrent = xInitial.dup();
         this.b = b;
         this.epsilon = epsilon;
+        this.noIterations = 0;
 
         this.validateInputs();
     }
@@ -36,7 +36,6 @@ public class SquaredNormOfADotXMinusB {
         double noColumnsB = this.b.columns();
 
         String errorMessage = "Invalid inputs: A should be an INDArray with m rows and n columns, x_init should be an INDArray with 1 row and n columns and b should be an INDArray with 1 row and m columns!";
-
         if (noRowsX != 1 && noRowsB != 1) {
             throw new InvalidOperationsOnArraysException(errorMessage);
         }
@@ -44,6 +43,9 @@ public class SquaredNormOfADotXMinusB {
             throw new InvalidOperationsOnArraysException(errorMessage);
         }
         if (noRowsA != noColumnsB) {
+            throw new InvalidOperationsOnArraysException(errorMessage);
+        }
+        if (noRowsA < noColumnsA) {
             throw new InvalidOperationsOnArraysException(errorMessage);
         }
     }
