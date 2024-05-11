@@ -19,6 +19,16 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native-platform</artifactId>
+            <version>1.0.0-beta7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version> <!-- Use the latest version available -->
+        </dependency>
     </dependencies>
 
     <properties>
