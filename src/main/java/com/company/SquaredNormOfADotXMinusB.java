@@ -111,11 +111,4 @@ public class SquaredNormOfADotXMinusB {
 
         return learningRate;
     }
-
-    public double getLossFunction(INDArray x) {
-        double norm = this.A.mmul(x).sub(this.b).norm2Number().doubleValue();
-        double squaredNorm = Math.pow(norm, 2);
-
-        return squaredNorm;
-    }
 }

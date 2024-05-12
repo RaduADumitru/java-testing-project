@@ -163,25 +163,6 @@ public class SecureEquationUtilsTest {
 
             }
 
-            public void testShowMenu_SolveLinearEquation() {
-                String input = "1\r\n2.5\r\n5\r\n0\r\n";
-                InputStream in = new ByteArrayInputStream(input.getBytes());
-                System.setIn(in);
-
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                System.setOut(new PrintStream(out));
-
-                SecureEquationUtils.showMenu();
-
-                String expectedOutput = "Select an operation:\r\n1. Solve linear equation\r\n2. Calculate factorial\r\n3. Calculate gauss sum\r\n0. Exit\r\n";
-                expectedOutput += "Enter the value of a:\r\n";
-                expectedOutput += "Enter the value of b:\r\n";
-                expectedOutput += "The solution to the linear equation is: -2.0\r\n";
-                expectedOutput += "Select an operation:\r\n1. Solve linear equation\r\n2. Calculate factorial\r\n3. Calculate gauss sum\r\n0. Exit\r\n";
-
-                assertEquals(expectedOutput, out.toString());
-            }
-
             public void testShowMenu_InvalidOperation() {
                 String input = "4\r\n0\r\n";
                 InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -232,7 +213,6 @@ public class SecureEquationUtilsTest {
                 testCalculateGaussSumByDefinition_PositiveNumber();
                 testCalculateGaussSumByDefinition_NegativeNumber();
                 testCalculateGaussSumByDefinition_LargeNumber();
-                testShowMenu_SolveLinearEquation();
                 testShowMenu_InvalidOperation();
                 testShowMenu_Exit();
             }

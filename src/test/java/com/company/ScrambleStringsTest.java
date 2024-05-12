@@ -36,7 +36,7 @@ public class ScrambleStringsTest {
                 )
         );
         assertThrows(IllegalArgumentException.class,
-                () -> obj.scrambleStrings(4, 4,
+                () -> obj.scrambleStrings(6, 0,
                         Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
                 )
         );
