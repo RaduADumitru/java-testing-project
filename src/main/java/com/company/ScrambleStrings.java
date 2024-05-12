@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScrambleStrings {
-    public static List<String> scrambleStrings(int left, int right, List<String> strings) {
+    public List<String> scrambleStrings(int left, int right, List<String> strings) {
         List<String> result = new ArrayList<>();
         int j, length;
         char letter;

@@ -9,30 +9,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ScrambleStringsTest {
+    ScrambleStrings obj = new ScrambleStrings();
+
     @Test
     public void lineCoverage() {
         assertEquals(
-                Arrays.asList("tiger", "ryrc&nag", "tvenss$f", "zebra", "wolf", "sUpErDuPeRaNiMal"),
-            ScrambleStrings.scrambleStrings(6, 8,
-                Arrays.asList("tiger", "elep3ant", "giraff6s", "zebra", "wolf", "superduperanimal")
-            )
+                Arrays.asList("gvtre", "ryrc&nag", "tvenss$f", "mroen", "jbys", "sUpErDuPeRaNiMal"),
+                obj.scrambleStrings(0, 8,
+                        Arrays.asList("tiger", "elep3ant", "giraff6s", "zebra", "wolf", "superduperanimal")
+                )
         );
 
         assertThrows(IllegalArgumentException.class,
-            () -> ScrambleStrings.scrambleStrings(6, 4,
-                Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
-            )
+                () -> obj.scrambleStrings(6, 4,
+                        Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
+                )
         );
         assertThrows(IllegalArgumentException.class,
-            () -> ScrambleStrings.scrambleStrings(-1, 5,
-                    Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
-            )
+                () -> obj.scrambleStrings(4, 4,
+                        Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
+                )
+        );
+        assertThrows(IllegalArgumentException.class,
+                () -> obj.scrambleStrings(-1, 5,
+                        Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
+                )
+        );
+        assertThrows(IllegalArgumentException.class,
+                () -> obj.scrambleStrings(4, 4,
+                        Arrays.asList("tiger", "ryrcunag", "tvenssr", "zebra", "wolf")
+                )
         );
         assertThrows(NullPointerException.class,
-            () -> ScrambleStrings.scrambleStrings(6, 8, null)
+                () -> obj.scrambleStrings(6, 8, null)
         );
         assertThrows(IllegalArgumentException.class,
-            () -> ScrambleStrings.scrambleStrings(6, 8, List.of())
+                () -> obj.scrambleStrings(6, 8, List.of())
         );
     }
 }

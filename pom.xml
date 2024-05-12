@@ -4,6 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.16.1</version>
+                <configuration>
+                    <targetClasses>
+                        <param>com.company.ScrambleStrings</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.company.ScrambleStringsTest</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <groupId>groupId</groupId>
     <artifactId>java-testing-project</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -18,6 +36,11 @@
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.nd4j</groupId>
@@ -35,5 +58,5 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-    
+
 </project>
